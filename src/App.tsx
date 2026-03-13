@@ -144,7 +144,7 @@ const Hero = () => {
               <a href="https://github.com/tensorwhiz141" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center hover:border-charcoal hover:bg-charcoal hover:text-white transition-all duration-500">
                 <Github size={20} />
               </a>
-              <a href="#" className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center hover:border-charcoal hover:bg-charcoal hover:text-white transition-all duration-500">
+              <a href="https://www.linkedin.com/in/nisarg-shah-075b92262/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center hover:border-charcoal hover:bg-charcoal hover:text-white transition-all duration-500">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -490,11 +490,11 @@ const Contact = () => {
             
             <div className="space-y-10">
               {[
-                { label: 'Email', value: 'nisargshah252003@gmail.com', icon: <Mail size={20} /> },
-                { label: 'LinkedIn', value: 'Nisarg Amit Shah', icon: <Linkedin size={20} /> },
-                { label: 'GitHub', value: 'tensorwhiz141', icon: <Github size={20} /> }
+                { label: 'Email', value: 'nisargshah252003@gmail.com', icon: <Mail size={20} />, link: 'mailto:nisargshah252003@gmail.com' },
+                { label: 'LinkedIn', value: 'Nisarg Amit Shah', icon: <Linkedin size={20} />, link: 'https://www.linkedin.com/in/nisarg-shah-075b92262/' },
+                { label: 'GitHub', value: 'tensorwhiz141', icon: <Github size={20} />, link: 'https://github.com/tensorwhiz141' }
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-6 group cursor-pointer">
+                <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 group cursor-pointer">
                   <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-charcoal transition-all duration-500 border border-white/5">
                     {item.icon}
                   </div>
@@ -502,7 +502,7 @@ const Contact = () => {
                     <div className="text-[10px] text-gray-500 uppercase font-black tracking-widest mb-1">{item.label}</div>
                     <div className="text-lg font-bold group-hover:text-accent transition-colors">{item.value}</div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -564,7 +564,7 @@ const Footer = () => {
             <a href="https://github.com/tensorwhiz141" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-accent hover:text-charcoal transition-all duration-500 border border-white/5">
               <Github size={20} />
             </a>
-            <a href="#" className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-accent hover:text-charcoal transition-all duration-500 border border-white/5">
+            <a href="https://www.linkedin.com/in/nisarg-shah-075b92262/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-accent hover:text-charcoal transition-all duration-500 border border-white/5">
               <Linkedin size={20} />
             </a>
           </div>

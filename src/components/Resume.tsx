@@ -156,10 +156,10 @@ const Resume: React.FC<ResumeProps> = ({ onClose }) => {
                 <Mail size={16} className="text-accent" />
                 <span className="text-sm font-medium">nisargshah252003@gmail.com</span>
               </div>
-              <div className="flex items-center gap-3 text-gray-500 hover:text-charcoal transition-colors">
+              <a href="https://www.linkedin.com/in/nisarg-shah-075b92262/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-500 hover:text-charcoal transition-colors">
                 <Linkedin size={16} className="text-accent" />
-                <span className="text-sm font-medium">linkedin.com/in/nisarg-shah</span>
-              </div>
+                <span className="text-sm font-medium">linkedin.com/in/nisarg-shah-075b92262</span>
+              </a>
               <div className="flex items-center gap-3 text-gray-500 hover:text-charcoal transition-colors">
                 <Github size={16} className="text-accent" />
                 <span className="text-sm font-medium">github.com/tensorwhiz141</span>
