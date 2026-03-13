@@ -146,9 +146,21 @@ const Resume: React.FC<ResumeProps> = ({ onClose }) => {
           
           {/* Left Column: Profile & Info */}
           <div className="lg:col-span-4 space-y-12">
-            <div>
-              <h1 className="text-5xl font-black tracking-tighter mb-4">NISARG<br />SHAH</h1>
-              <p className="text-accent font-bold uppercase tracking-[0.2em] text-xs">IT Engineer & ML Researcher</p>
+            <div className="flex items-center gap-6 mb-8">
+              <div className="w-24 h-24 rounded-2xl overflow-hidden border border-gray-100 shadow-sm shrink-0">
+                <img 
+                  src="/profile.jpg" 
+                  alt="Nisarg Shah" 
+                  className="w-full h-full object-cover grayscale"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop";
+                  }}
+                />
+              </div>
+              <div>
+                <h1 className="text-5xl font-black tracking-tighter mb-2">NISARG<br />SHAH</h1>
+                <p className="text-accent font-bold uppercase tracking-[0.2em] text-xs">IT Engineer & ML Researcher</p>
+              </div>
             </div>
 
             <div className="space-y-4">

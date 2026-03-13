@@ -170,13 +170,16 @@ const Hero = () => {
           viewport={{ once: true }}
           className="lg:col-span-5 relative"
         >
-          <div className="relative rounded-[4rem] overflow-hidden shadow-2xl aspect-[4/5] bg-gray-100 group">
-            <img 
-              src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop" 
-              alt="Developer Workspace" 
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
-              referrerPolicy="no-referrer"
-            />
+            <div className="relative rounded-[4rem] overflow-hidden shadow-2xl aspect-[4/5] bg-gray-100 group">
+              <img 
+                src="/profile.jpg" 
+                alt="Nisarg Amit Shah" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop";
+                }}
+              />
             
             {/* Floating Badge */}
             <div className="absolute top-8 left-8 glass p-4 rounded-2xl flex items-center gap-3 shadow-2xl">
@@ -250,10 +253,13 @@ const About = ({ onViewResume }: { onViewResume: () => void }) => {
             
             <div className="relative rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl aspect-square max-w-md mx-auto">
                <img 
-                 src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop" 
-                 alt="Tech Workspace" 
+                 src="/profile.jpg" 
+                 alt="Nisarg Shah" 
                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                  referrerPolicy="no-referrer"
+                 onError={(e) => {
+                   (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop";
+                 }}
                />
                <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent"></div>
                <div className="absolute bottom-10 left-10">
