@@ -485,10 +485,10 @@ const Contact = () => {
     // Note: You will need to replace these with your own EmailJS IDs
     // Service ID, Template ID, and Public Key
     emailjs.sendForm(
-      'YOUR_SERVICE_ID', 
-      'YOUR_TEMPLATE_ID', 
+      'service_90z9tf4', 
+      'template_7grmwoo', 
       form.current, 
-      'YOUR_PUBLIC_KEY'
+      '1u0acNLLIPsWrgeKH'
     )
       .then((result) => {
           console.log(result.text);
@@ -551,7 +551,7 @@ const Contact = () => {
                   <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-2">Name</label>
                   <input 
                     type="text" 
-                    name="user_name"
+                    name="name"
                     required
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-accent transition-all duration-500 placeholder:text-gray-700" 
                     placeholder="John Doe" 
@@ -561,7 +561,7 @@ const Contact = () => {
                   <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-2">Email</label>
                   <input 
                     type="email" 
-                    name="user_email"
+                    name="email"
                     required
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-accent transition-all duration-500 placeholder:text-gray-700" 
                     placeholder="john@example.com" 
