@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import emailjs from '@emailjs/browser';
 import { 
   Github, 
   Linkedin, 
@@ -471,6 +472,36 @@ const Experience = ({ onViewResume }: { onViewResume: () => void }) => {
 };
 
 const Contact = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!form.current) return;
+
+    setStatus('sending');
+
+    // Note: You will need to replace these with your own EmailJS IDs
+    // Service ID, Template ID, and Public Key
+    emailjs.sendForm(
+      'YOUR_SERVICE_ID', 
+      'YOUR_TEMPLATE_ID', 
+      form.current, 
+      'YOUR_PUBLIC_KEY'
+    )
+      .then((result) => {
+          console.log(result.text);
+          setStatus('success');
+          form.current?.reset();
+          setTimeout(() => setStatus('idle'), 5000);
+      }, (error) => {
+          console.log(error.text);
+          setStatus('error');
+          setTimeout(() => setStatus('idle'), 5000);
+      });
+  };
+
   return (
     <section id="contact" className="py-32 bg-charcoal text-white rounded-t-[5rem] relative overflow-hidden noise-bg">
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-[120px] -z-10"></div>
@@ -514,23 +545,52 @@ const Contact = () => {
             viewport={{ once: true }}
             className="glass-dark p-12 rounded-[4rem] relative"
           >
-            <form className="space-y-8">
+            <form ref={form} onSubmit={sendEmail} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-2">Name</label>
-                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-accent transition-all duration-500 placeholder:text-gray-700" placeholder="John Doe" />
+                  <input 
+                    type="text" 
+                    name="user_name"
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-accent transition-all duration-500 placeholder:text-gray-700" 
+                    placeholder="John Doe" 
+                  />
                 </div>
                 <div className="space-y-3">
                   <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-2">Email</label>
-                  <input type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-accent transition-all duration-500 placeholder:text-gray-700" placeholder="john@example.com" />
+                  <input 
+                    type="email" 
+                    name="user_email"
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-accent transition-all duration-500 placeholder:text-gray-700" 
+                    placeholder="john@example.com" 
+                  />
                 </div>
               </div>
               <div className="space-y-3">
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-2">Message</label>
-                <textarea rows={5} className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:outline-none focus:border-accent transition-all duration-500 resize-none placeholder:text-gray-700" placeholder="How can I help you?"></textarea>
+                <textarea 
+                  name="message"
+                  required
+                  rows={5} 
+                  className="w-full bg-white/5 border border-white/10 rounded-3xl px-8 py-6 focus:outline-none focus:border-accent transition-all duration-500 resize-none placeholder:text-gray-700" 
+                  placeholder="How can I help you?"
+                ></textarea>
               </div>
-              <button className="w-full py-6 bg-accent text-charcoal font-black rounded-2xl hover:bg-white transition-all duration-500 flex items-center justify-center gap-3 shadow-2xl shadow-accent/20 group">
-                Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <button 
+                type="submit"
+                disabled={status === 'sending'}
+                className={`w-full py-6 font-black rounded-2xl transition-all duration-500 flex items-center justify-center gap-3 shadow-2xl group ${
+                  status === 'success' ? 'bg-green-500 text-white' : 
+                  status === 'error' ? 'bg-red-500 text-white' : 
+                  'bg-accent text-charcoal hover:bg-white shadow-accent/20'
+                }`}
+              >
+                {status === 'idle' && <>Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /></>}
+                {status === 'sending' && <>Sending...</>}
+                {status === 'success' && <>Message Sent Successfully!</>}
+                {status === 'error' && <>Error! Please try again.</>}
               </button>
             </form>
           </motion.div>
