@@ -313,7 +313,7 @@ const Portfolio = () => {
       category: 'Web Dev', 
       img: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=2070&auto=format&fit=crop', 
       type: 'large',
-      link: 'https://github.com/tensorwhiz141/parlour-booking.git'
+      link: 'https://parlour-booking-v7ds.vercel.app/'
     },
     { 
       title: 'Financial Simulator', 
